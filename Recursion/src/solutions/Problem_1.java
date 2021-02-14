@@ -1,5 +1,7 @@
 package solutions;
 
+import funcs.BigFunc;
+
 public class Problem_1
 {
 	public static void main(String[] args)

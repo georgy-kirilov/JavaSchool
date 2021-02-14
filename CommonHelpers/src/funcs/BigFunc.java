@@ -1,4 +1,4 @@
-package solutions;
+package funcs;
 
 public interface BigFunc<Ta, Tb, Tout>
 {
