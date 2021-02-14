@@ -2,7 +2,7 @@ package denev.feb_17_2021;
 
 import actions.Action;
 
-public class P03_P04
+public class P03_04
 {
 	public static void main(String[] args)
 	{

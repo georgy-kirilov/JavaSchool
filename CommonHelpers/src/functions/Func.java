@@ -1,6 +1,6 @@
 package functions;
 
-public interface Func<Ta, Tb, Tout>
+public interface Func<T, U, Tout>
 {
-	Tout invoke(Ta a, Tb b);
+	Tout invoke(T first, U second);
 }

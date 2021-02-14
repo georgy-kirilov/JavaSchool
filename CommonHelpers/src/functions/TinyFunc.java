@@ -1,6 +1,6 @@
 package functions;
 
-public interface TinyFunc<Tin, Tout> 
+public interface TinyFunc<T, Tout> 
 {
-	Tout invoke(Tin argument);
+	Tout invoke(T argument);
 }
