@@ -10,7 +10,7 @@ public class Problem_1
 	
 	static int sumOfElements(int last)
 	{
-		Func<Integer, Integer, Integer> func = new Func<Integer, Integer, Integer>()
+		BigFunc<Integer, Integer, Integer> func = new BigFunc<Integer, Integer, Integer>()
 		{
 			@Override
 			public Integer invoke(Integer current, Integer last)

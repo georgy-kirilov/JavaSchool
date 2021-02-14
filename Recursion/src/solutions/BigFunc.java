@@ -1,6 +1,6 @@
 package solutions;
 
-public interface Func<Ta, Tb, Tout>
+public interface BigFunc<Ta, Tb, Tout>
 {
 	Tout invoke(Ta a, Tb b);
 }
