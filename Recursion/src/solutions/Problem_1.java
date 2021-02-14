@@ -4,7 +4,7 @@ public class Problem_1
 {
 	public static void main(String[] args)
 	{
-		int sum = sumOfElements(5);
+		int sum = sumOfElements(9);
 		System.out.println(sum);
 	}
 	
