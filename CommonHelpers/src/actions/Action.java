@@ -1,6 +1,6 @@
 package actions;
 
-public interface Action<Ta, Tb>
+public interface Action<T, U>
 {
-	void invoke(Ta a, Tb b);
+	void invoke(T first, U second);
 }

@@ -1,6 +1,6 @@
 package actions;
 
-public interface BigAction<Ta, Tb, Tc>
+public interface BigAction<T, U, V>
 {
-	void invoke(Ta a, Tb b, Tc c);
+	void invoke(T first, U second, V third);
 }
