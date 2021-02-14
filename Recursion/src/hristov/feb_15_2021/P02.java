@@ -6,7 +6,11 @@ public class P02
 {
 	public static void main(String[] args)
 	{
-		printNumbers(11);
+		printNumbers(15);
+		
+		System.out.println();
+		
+		printNumbers(-5);
 	}
 	
 	static void printNumbers(int lastNumber)
