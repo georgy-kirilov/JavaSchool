@@ -1,8 +1,8 @@
-package solutions;
+package denev.feb_14_2021;
 
-import funcs.BigFunc;
+import functions.Func;
 
-public class Problem_1
+public class P01
 {
 	public static void main(String[] args)
 	{
@@ -12,7 +12,7 @@ public class Problem_1
 	
 	static int sumOfElements(int last)
 	{
-		BigFunc<Integer, Integer, Integer> func = new BigFunc<Integer, Integer, Integer>()
+		Func<Integer, Integer, Integer> func = new Func<Integer, Integer, Integer>()
 		{
 			@Override
 			public Integer invoke(Integer current, Integer last)

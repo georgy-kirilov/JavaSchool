@@ -1,4 +1,4 @@
-package funcs;
+package functions;
 
 public interface TinyFunc<Tin, Tout> 
 {

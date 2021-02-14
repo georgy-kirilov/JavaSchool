@@ -1,14 +1,14 @@
-package solutions;
+package denev.feb_14_2021;
 
 import actions.BigAction;
 
-public class Problem_5
+public class P05
 {
 	public static void main(String[] args)
-	{
-		int sequenceLength = 10;
+	{	
+		int sequenceLength = 5;
 		
-		for (int base = 2; base <= 10; base++)
+		for (int base = 1; base <= 10; base++)
 		{
 			printSequence(sequenceLength, base);
 			System.out.println();

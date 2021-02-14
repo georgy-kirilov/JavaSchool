@@ -1,26 +1,26 @@
-package solutions;
+package denev.feb_14_2021;
 
 import actions.Action;
 
-public class Problems_3_and_4
+public class P03_P04
 {
 	public static void main(String[] args)
 	{
-		int[] tests = new int[] { 561326, -1910, 20488, -9, 10 };
+		int[] tests = { 561326, -1910, 20488, -9, 10 };
 		
 		for (int test : tests)
 		{
 			System.out.println("Normal: " + test);
-			System.out.print("Left: ");
-			printDigits(test, true);
-			System.out.print("Right: ");
-			printDigits(test, false);
+			System.out.print("Left: " + printDigits(test, true));
+			System.out.print("Right: " + printDigits(test, false));
 			System.out.println();
 		}
 	}
 	
-	static void printDigits(int number, boolean fromLeft)
+	static String printDigits(int number, boolean fromLeft)
 	{	
+		StringBuilder sb = new StringBuilder();
+		
 		Action<String, Integer> action = new Action<String, Integer>()
 		{
 			@Override
@@ -28,13 +28,12 @@ public class Problems_3_and_4
 			{
 				if (position >= numberAsString.length() || position < 0)
 				{
-					System.out.println();
+					sb.append("\n");
 					return;
 				}
 				
 				int offset = fromLeft ? 1 : -1;
-				
-				System.out.print(numberAsString.charAt(position) + ", ");
+				sb.append(numberAsString.charAt(position) + ", ");
 				this.invoke(numberAsString, position + offset);
 			}
 		};
@@ -42,5 +41,7 @@ public class Problems_3_and_4
 		String numberAsString = Integer.toString(Math.abs(number));
 		int position = fromLeft ? 0 : numberAsString.length() - 1;
 		action.invoke(numberAsString, position);
+		
+		return sb.toString();
 	}
 }

@@ -1,16 +1,18 @@
-package solutions;
+package denev.feb_14_2021;
 
-import funcs.TinyFunc;
+import functions.TinyFunc;
 
-public class Problem_2
+public class P02
 {
 	public static void main(String[] args)
 	{
-		int digitSum = sumOfDigits(-2455);
-		System.out.println(digitSum);
+		int[] tests = { -2455, 988, 100, 12121, 0 };
 		
-		digitSum = sumOfDigits(1020);
-		System.out.println(digitSum);
+		for (int test : tests)
+		{
+			int sum = sumOfDigits(test);
+			System.out.printf("%d -> %d\n", test, sum);
+		}
 	}
 	
 	static int sumOfDigits(int number)
