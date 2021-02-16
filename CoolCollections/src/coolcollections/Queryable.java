@@ -13,5 +13,7 @@ public interface Queryable<T> extends Iterable<T>
 	
 	boolean any(Predicate<T> filter);
 	
+	boolean all(Predicate<T> filter);
+	
 	String join(String separator);
 }

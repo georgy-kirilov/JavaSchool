@@ -56,13 +56,27 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	{
 		for (T item : this)
 		{
-			if (item != null && filter.invoke(item))
+			if (filter.invoke(item))
 			{
 				return true;
 			}
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public boolean all(Predicate<T> filter)
+	{
+		for (T item : this)
+		{
+			if (!filter.invoke(item))
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	@Override
