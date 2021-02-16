@@ -11,5 +11,7 @@ public interface Queryable<T> extends Iterable<T>
 	
 	CoolList<T> toList();
 	
+	boolean any(Predicate<T> filter);
+	
 	String join(String separator);
 }

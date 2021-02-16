@@ -52,6 +52,20 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
+	public boolean any(Predicate<T> filter)
+	{
+		for (T item : this)
+		{
+			if (item != null && filter.invoke(item))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	@Override
 	public String join(String separator)
 	{	
 		final String defaultSeparator = ", ";

@@ -37,5 +37,8 @@ public class CoolArrayListTest
 		System.out.println(newNames.contains(null));
 		System.out.println(newNames.contains("Shrek"));
 		System.out.println(newNames.join(null));
+		
+		boolean nameWithXExists = newNames.any(x -> x.contains("s"));
+		System.out.println(nameWithXExists);
 	}
 }
