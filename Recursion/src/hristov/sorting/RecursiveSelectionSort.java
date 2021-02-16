@@ -3,22 +3,19 @@ package hristov.sorting;
 import java.util.Arrays;
 
 import actions.Action;
-import text.StringExtensions;
 
-public class Program
+public class RecursiveSelectionSort
 {
 	public static void main(String[] args)
 	{
 		Integer[] array = { 3, -9, 0, 12, 7 };
-		System.out.println(StringExtensions.join(", ", Arrays.asList(array)));
+		System.out.println(Arrays.toString(array));
 		
 		selectionSort(array, true);
-		String sortedAscArray = StringExtensions.join(", ", Arrays.asList(array));
-		System.out.println(sortedAscArray);
+		System.out.println(Arrays.toString(array));
 		
 		selectionSort(array, false);
-		String sortedDescArray = StringExtensions.join(", ", Arrays.asList(array));
-		System.out.println(sortedDescArray);
+		System.out.println(Arrays.toString(array));
 	}
 	
 	static void selectionSort(Integer[] array, boolean ascending)
