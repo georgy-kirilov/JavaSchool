@@ -1,9 +1,7 @@
 package coolcollections;
 
 public interface CoolList<T> extends Queryable<T>
-{
-	int count();
-	
+{	
 	T get(int index);
 	
 	void set(int index, T item);

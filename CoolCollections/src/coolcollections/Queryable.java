@@ -10,6 +10,10 @@ public interface Queryable<T> extends Iterable<T>
 	
 	<Out> Queryable<Out> select(TinyFunc<T, Out> selector);
 	
+	<C extends Comparable<C>> Queryable<T> sortBy(TinyFunc<T, C> func);
+	
+	<C extends Comparable<C>> Queryable<T> sortByDescending(TinyFunc<T, C> func);
+	
 	CoolList<T> toList();
 	
 	T firstOrDefault(Predicate<T> filter);
@@ -21,4 +25,6 @@ public interface Queryable<T> extends Iterable<T>
 	void each(TinyAction<T> action);
 	
 	String join(String separator);
+	
+	int count();
 }

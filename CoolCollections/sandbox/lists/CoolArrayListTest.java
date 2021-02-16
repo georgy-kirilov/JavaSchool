@@ -50,14 +50,15 @@ public class CoolArrayListTest
 		CoolList<Integer> numbers = new CoolArrayList<Integer>();
 		numbers.add(7);
 		numbers.add(2);
-		numbers.add(3);
+		numbers.add(0);
 		numbers.add(6);
 		numbers.add(8);
 		numbers.add(9);
 		numbers.add(-70);
 		
 		System.out.println(numbers.firstOrDefault(x -> x > 90));
-		
 		numbers.each(n -> System.out.printf("%d -> %d\n", n, n * n));
+		
+		System.out.println(numbers.sortByDescending(n -> n).join(", "));
 	}
 }
