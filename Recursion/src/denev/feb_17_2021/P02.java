@@ -1,6 +1,6 @@
 package denev.feb_17_2021;
 
-import functions.TinyFunc;
+import delegates.TinyFunc;
 
 public class P02
 {

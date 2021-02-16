@@ -1,6 +1,6 @@
 package hristov.feb_15_2021;
 
-import functions.Func;
+import delegates.Func;
 
 public class P03
 {

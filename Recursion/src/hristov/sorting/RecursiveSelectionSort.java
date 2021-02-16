@@ -2,7 +2,7 @@ package hristov.sorting;
 
 import java.util.Arrays;
 
-import actions.Action;
+import delegates.Action;
 
 public class RecursiveSelectionSort
 {

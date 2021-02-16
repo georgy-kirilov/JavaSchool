@@ -1,4 +1,4 @@
-package actions;
+package delegates;
 
 public interface TinyAction<T>
 {

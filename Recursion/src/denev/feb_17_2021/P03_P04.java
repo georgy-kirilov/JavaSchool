@@ -1,6 +1,6 @@
 package denev.feb_17_2021;
 
-import actions.Action;
+import delegates.Action;
 
 public class P03_P04
 {

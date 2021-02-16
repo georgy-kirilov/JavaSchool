@@ -1,6 +1,6 @@
 package hristov.feb_15_2021;
 
-import actions.BigAction;
+import delegates.BigAction;
 
 public class P05
 {

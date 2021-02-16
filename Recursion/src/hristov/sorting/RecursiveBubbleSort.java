@@ -2,7 +2,7 @@ package hristov.sorting;
 
 import java.util.Arrays;
 
-import actions.BigAction;
+import delegates.BigAction;
 
 public class RecursiveBubbleSort
 {

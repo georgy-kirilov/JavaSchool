@@ -1,6 +1,6 @@
 package hristov.feb_15_2021;
 
-import actions.Action;
+import delegates.Action;
 
 public class P04
 {

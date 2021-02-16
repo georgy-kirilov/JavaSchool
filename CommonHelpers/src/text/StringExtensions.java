@@ -8,9 +8,9 @@ public class StringExtensions
 	{
 		StringBuilder sb = new StringBuilder();
 		
-		for (T object : iterable)
+		for (T item : iterable)
 		{
-			sb.append(object);
+			sb.append(item);
 			sb.append(delimeter);
 		}
 		
