@@ -50,4 +50,33 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		
 		return list;
 	}
+	
+	@Override
+	public String join(String separator)
+	{	
+		final String defaultSeparator = ", ";
+		
+		if (separator == null)
+		{
+			separator = defaultSeparator;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (T item : this)
+		{
+			sb.append(item);
+			sb.append(separator);
+		}
+		
+		String result = sb.toString();
+		int index = result.lastIndexOf(separator);
+		
+		if (index != -1)
+		{
+			result = result.substring(0, result.length() - separator.length());
+		}
+		
+		return result;
+	}
 }

@@ -10,4 +10,6 @@ public interface Queryable<T> extends Iterable<T>
 	<Out> Queryable<Out> select(TinyFunc<T, Out> selector);
 	
 	CoolList<T> toList();
+	
+	String join(String separator);
 }

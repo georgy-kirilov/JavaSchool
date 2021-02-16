@@ -36,5 +36,6 @@ public class CoolArrayListTest
 		System.out.println(newNames.contains("John Doe"));
 		System.out.println(newNames.contains(null));
 		System.out.println(newNames.contains("Shrek"));
+		System.out.println(newNames.join(null));
 	}
 }
