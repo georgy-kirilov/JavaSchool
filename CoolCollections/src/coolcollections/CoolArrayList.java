@@ -51,7 +51,6 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 			if (this.checkIfEqual(this.items[i], item))
 			{
 				this.removeAt(i);
-				this.count--;
 				return true;
 			}
 		}
@@ -71,6 +70,7 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 	{
 		this.moveItemsToTheRight(index);
 		this.set(index, item);
+		this.count++;
 	}
 
 	@Override
@@ -148,6 +148,12 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 	{
 		this.items = (T[]) new Object[INITIAL_CAPACITY];
 		this.count = 0;
+	}
+	
+	@Override
+	public CoolList<T> toList()
+	{
+		return this;
 	}
 	
 	@SuppressWarnings("unchecked")

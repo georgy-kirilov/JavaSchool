@@ -37,4 +37,17 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		
 		return itemsAfterSelection;
 	}
+
+	@Override
+	public CoolList<T> toList()
+	{	
+		CoolList<T> list = new CoolArrayList<T>();
+		
+		for (T item : this)
+		{
+			list.add(item);
+		}
+		
+		return list;
+	}
 }
