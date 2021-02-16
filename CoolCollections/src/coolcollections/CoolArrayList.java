@@ -75,9 +75,20 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 	}
 
 	@Override
-	public boolean contains(T item)
+	public boolean contains(T searchedItem)
 	{
-		throw new UnsupportedOperationException();
+		for (T item : this)
+		{
+			boolean found = item == null && searchedItem == null 
+					|| item != null && item.equals(searchedItem);
+			
+			if (found)
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@Override
