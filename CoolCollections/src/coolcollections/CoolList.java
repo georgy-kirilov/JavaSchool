@@ -12,6 +12,8 @@ public interface CoolList<T> extends Queryable<T>
 	
 	boolean remove(T item);
 	
+	void removeAt(int index);
+	
 	void insert(int index, T item);
 	
 	boolean contains(T item);

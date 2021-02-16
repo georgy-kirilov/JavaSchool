@@ -44,14 +44,33 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 	}
 
 	@Override
-	public boolean remove(T item) {
-		throw new UnsupportedOperationException();
+	public boolean remove(T item)
+	{
+		for (int i = 0; i < this.count(); i++)
+		{
+			if (this.checkIfEqual(this.items[i], item))
+			{
+				this.removeAt(i);
+				this.count--;
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	@Override
-	public void insert(int index, T item) {
-		throw new UnsupportedOperationException();
-		
+	public void removeAt(int index)
+	{
+		this.moveItemsToTheLeft(index);
+		this.count--;
+	}
+	
+	@Override
+	public void insert(int index, T item)
+	{
+		this.moveItemsToTheRight(index);
+		this.set(index, item);
 	}
 
 	@Override
@@ -68,21 +87,18 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 	}
 	
 	@Override
-	public void set(int index, T value)
+	public void set(int index, T item)
 	{
 		this.throwIfOutOfRange(index);
-		this.items[index] = value;
+		this.items[index] = item;
 	}
 
 	@Override
-	public boolean contains(T searchedItem)
+	public boolean contains(T item)
 	{
-		for (T item : this)
+		for (T current : this)
 		{
-			boolean found = item == null && searchedItem == null 
-					|| item != null && item.equals(searchedItem);
-			
-			if (found)
+			if (this.checkIfEqual(current, item))
 			{
 				return true;
 			}
@@ -154,5 +170,35 @@ public class CoolArrayList<T> extends QueryableCollection<T> implements CoolList
 		{
 			throw new IllegalArgumentException("Index was outside the list bounds");
 		}
+	}
+	
+	private void moveItemsToTheLeft(int index)
+	{
+		this.throwIfOutOfRange(index);
+		
+		for (int i = index; i < this.count - 1; i++)
+		{
+			this.items[i] = this.items[i + 1];
+		}
+	}
+	
+	private void moveItemsToTheRight(int index)
+	{
+		this.throwIfOutOfRange(index);
+		
+		if (this.count() >= this.capacity())
+		{
+			this.expand();
+		}
+		
+		for (int i = this.count(); i > index; i--)
+		{
+			this.items[i] = this.items[i - 1];
+		}
+	}
+	
+	private boolean checkIfEqual(T first, T second)
+	{
+		return first == null && second == null || first != null && first.equals(second);
 	}
 }
