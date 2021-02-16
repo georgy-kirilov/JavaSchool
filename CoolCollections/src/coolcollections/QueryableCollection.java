@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import delegates.TinyFunc;
 import delegates.Predicate;
+import delegates.TinyAction;
 
 public abstract class QueryableCollection<T> implements Queryable<T>
 {
@@ -91,6 +92,15 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		}
 		
 		return true;
+	}
+	
+	@Override
+	public void each(TinyAction<T> action)
+	{
+		for (T item : this)
+		{
+			action.invoke(item);
+		}
 	}
 	
 	@Override

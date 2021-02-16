@@ -57,5 +57,7 @@ public class CoolArrayListTest
 		numbers.add(-70);
 		
 		System.out.println(numbers.firstOrDefault(x -> x > 90));
+		
+		numbers.each(n -> System.out.printf("%d -> %d\n", n, n * n));
 	}
 }

@@ -1,6 +1,7 @@
 package coolcollections;
 
 import delegates.TinyFunc;
+import delegates.TinyAction;
 import delegates.Predicate;
 
 public interface Queryable<T> extends Iterable<T>
@@ -16,6 +17,8 @@ public interface Queryable<T> extends Iterable<T>
 	boolean any(Predicate<T> filter);
 	
 	boolean all(Predicate<T> filter);
+	
+	void each(TinyAction<T> action);
 	
 	String join(String separator);
 }
