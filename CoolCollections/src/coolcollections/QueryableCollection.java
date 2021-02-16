@@ -113,12 +113,14 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
-	public void each(TinyAction<T> action)
+	public Queryable<T> each(TinyAction<T> action)
 	{
 		for (T item : this)
 		{
 			action.invoke(item);
 		}
+		
+		return this;
 	}
 	
 	@Override

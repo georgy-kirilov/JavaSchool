@@ -14,17 +14,17 @@ public interface Queryable<T> extends Iterable<T>
 	
 	<C extends Comparable<C>> Queryable<T> sortByDescending(TinyFunc<T, C> func);
 	
-	CoolList<T> toList();
-	
 	T firstOrDefault(Predicate<T> filter);
 	
 	boolean any(Predicate<T> filter);
 	
 	boolean all(Predicate<T> filter);
 	
-	void each(TinyAction<T> action);
+	Queryable<T> each(TinyAction<T> action);
 	
 	String join(String separator);
+	
+	CoolList<T> toList();
 	
 	int count();
 }
