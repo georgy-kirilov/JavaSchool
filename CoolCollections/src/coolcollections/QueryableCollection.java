@@ -52,6 +52,20 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
+	public T firstOrDefault(Predicate<T> filter)
+	{
+		for (T item : this)
+		{
+			if (filter.invoke(item))
+			{
+				return item;
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
 	public boolean any(Predicate<T> filter)
 	{
 		for (T item : this)

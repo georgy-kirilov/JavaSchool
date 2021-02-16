@@ -11,6 +11,8 @@ public interface Queryable<T> extends Iterable<T>
 	
 	CoolList<T> toList();
 	
+	T firstOrDefault(Predicate<T> filter);
+	
 	boolean any(Predicate<T> filter);
 	
 	boolean all(Predicate<T> filter);

@@ -45,5 +45,17 @@ public class CoolArrayListTest
 		newNames.remove(null);
 		
 		System.out.println(newNames.all(x -> x.length() > 3));
+		System.out.println(newNames.firstOrDefault(x -> x.length() > 10));
+		
+		CoolList<Integer> numbers = new CoolArrayList<Integer>();
+		numbers.add(7);
+		numbers.add(2);
+		numbers.add(3);
+		numbers.add(6);
+		numbers.add(8);
+		numbers.add(9);
+		numbers.add(-70);
+		
+		System.out.println(numbers.firstOrDefault(x -> x > 90));
 	}
 }
