@@ -30,10 +30,28 @@ public class ArrayStackTest
 		stack.push(10);
 		stack.push(20);
 		stack.push(30);
+		printStack(stack);
 		
-		for (int item : stack)
+		ArrayStack<Integer> otherStack = new ArrayStack<>();
+		otherStack.push(40);
+		otherStack.push(50);
+		
+		stack.pushAll(otherStack);
+		printStack(stack);
+		
+		stack.clear();
+		printStack(stack);
+	}
+	
+	static <T> void printStack(Stack<T> stack)
+	{
+		String result = "[";
+		
+		for (T item : stack)
 		{
-			System.out.println(item);
+			result += item + " ";
 		}
+		
+		System.out.println(result.trim() + "]");
 	}
 }

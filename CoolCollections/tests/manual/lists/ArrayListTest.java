@@ -64,13 +64,13 @@ public class ArrayListTest
 	
 	static <T> void printList(List<T> list)
 	{
-		String result = "";
+		String result = "[";
 		
 		for (T item : list)
 		{
 			result += item + " ";
 		}
 		
-		System.out.println(result);
+		System.out.println(result.trim() + "]");
 	}
 }

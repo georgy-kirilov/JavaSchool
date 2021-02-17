@@ -11,16 +11,20 @@ public class ArrayStack<T> implements Stack<T>
 	private T[] array;
 	private int count;
 	
+	public ArrayStack(Iterable<T> collection)
+	{
+		this();
+		this.pushAll(collection);
+	}
+	
 	public ArrayStack()
 	{
 		this(INITIAL_CAPACITY);
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	public ArrayStack(int initialCapacity)
 	{
-		this.array = (T[]) new Object[initialCapacity];
-		this.count = 0;
+		this.clear();
 	}
 	
 	@Override
@@ -39,6 +43,15 @@ public class ArrayStack<T> implements Stack<T>
 		
 		this.array[this.count] = item;
 		this.count++;
+	}
+	
+	@Override
+	public void pushAll(Iterable<T> collection)
+	{
+		for (T item : collection)
+		{
+			this.push(item);
+		}
 	}
 
 	@Override
@@ -120,5 +133,13 @@ public class ArrayStack<T> implements Stack<T>
 		{
 			throw new RuntimeException("Stack was empty");
 		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public void clear()
+	{
+		this.array = (T[]) new Object[INITIAL_CAPACITY];
+		this.count = 0;
 	}
 }
