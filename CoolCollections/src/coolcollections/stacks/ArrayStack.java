@@ -11,11 +11,22 @@ public class ArrayStack<T> implements Stack<T>
 	private T[] array;
 	private int count;
 	
-	@SuppressWarnings("unchecked")
 	public ArrayStack()
 	{
-		this.array = (T[]) new Object[INITIAL_CAPACITY];
+		this(INITIAL_CAPACITY);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayStack(int initialCapacity)
+	{
+		this.array = (T[]) new Object[initialCapacity];
 		this.count = 0;
+	}
+	
+	@Override
+	public int count()
+	{
+		return this.count;
 	}
 	
 	@Override

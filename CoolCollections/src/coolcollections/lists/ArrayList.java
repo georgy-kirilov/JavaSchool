@@ -168,13 +168,7 @@ public class ArrayList<T> implements List<T>
 			@Override
 			public boolean hasNext()
 			{
-				if (index < count())
-				{
-					return true;
-				}
-				
-				index = 0;
-				return false;
+				return index < count();
 			}
 
 			@Override
