@@ -127,19 +127,19 @@ public class ArrayStack<T> implements Stack<T>
 		this.array = copy;
 	}
 	
-	private void throwIfStackIsEmpty()
-	{
-		if (this.empty())
-		{
-			throw new RuntimeException("Stack was empty");
-		}
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public void clear()
 	{
 		this.array = (T[]) new Object[INITIAL_CAPACITY];
 		this.count = 0;
+	}
+	
+	private void throwIfStackIsEmpty()
+	{
+		if (this.empty())
+		{
+			throw new RuntimeException("Stack was empty");
+		}
 	}
 }

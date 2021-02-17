@@ -1,5 +1,7 @@
 package manual.lists;
 
+import java.util.Arrays;
+
 import coolcollections.lists.ArrayList;
 import coolcollections.lists.List;
 
@@ -41,7 +43,9 @@ public class ArrayListTest
 		otherList.add(888);
 		otherList.add(999);
 		
-		System.out.println("Contains all: " + list.containsAll(otherList));
+		Integer[] array = { 2, 888, 999 };
+		
+		System.out.println("Contains all: " + list.containsAll(Arrays.asList(array)));
 		
 		otherList.add(-5);
 		System.out.println("Contains all: " + list.containsAll(otherList));
