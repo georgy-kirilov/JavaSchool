@@ -2,6 +2,7 @@ package coolcollections;
 
 import delegates.TinyFunc;
 import delegates.TinyAction;
+import coolcollections.lists.List;
 import delegates.Predicate;
 
 public interface Queryable<TSource> extends Iterable<TSource>
@@ -24,7 +25,7 @@ public interface Queryable<TSource> extends Iterable<TSource>
 	
 	String join(String separator);
 	
-	CoolList<TSource> toList();
+	List<TSource> toList();
 	
 	int count();
 }

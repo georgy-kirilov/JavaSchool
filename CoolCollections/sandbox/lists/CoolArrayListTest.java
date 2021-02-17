@@ -1,13 +1,19 @@
 package lists;
 
-import coolcollections.CoolList;
-import coolcollections.CoolArrayList;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 public class CoolArrayListTest
 {
 	public static void main(String[] args)
 	{
-		CoolList<String> names = new CoolArrayList<String>();
+		Stack<String> stack = new Stack<>();
+		List<Integer> list = new ArrayList<Integer>();
+		list.add
+		System.out.println(list.toString());
+		/*List<String> names = new ArrayList<String>();
 		
 		names.add("Ivan");
 		names.add("Petar");
@@ -16,7 +22,7 @@ public class CoolArrayListTest
 		names.add("John Doe");
 		names.add("Bobi");
 		
-		CoolList<String> newNames = names.where(n -> n.charAt(0) <= 'K').toList();
+		List<String> newNames = names.where(n -> n.charAt(0) <= 'K').toList();
 		
 		for (String name : newNames)
 		{
@@ -47,7 +53,7 @@ public class CoolArrayListTest
 		System.out.println(newNames.all(x -> x.length() > 3));
 		System.out.println(newNames.firstOrDefault(x -> x.length() > 10));
 		
-		CoolList<Integer> numbers = new CoolArrayList<Integer>();
+		List<Integer> numbers = new ArrayList<Integer>();
 		numbers.add(7);
 		numbers.add(2);
 		numbers.add(0);
@@ -59,6 +65,6 @@ public class CoolArrayListTest
 		System.out.println(numbers.firstOrDefault(x -> x > 90));
 		numbers.each(n -> System.out.printf("%d -> %d\n", n, n * n));
 		
-		System.out.println(numbers.sortByDescending(n -> n).join(", "));
+		System.out.println(numbers.sortByDescending(n -> n).join(", "));*/
 	}
 }
