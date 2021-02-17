@@ -2,22 +2,22 @@ package coolcollections;
 
 import java.util.Iterator;
 
-import delegates.TinyFunc;
-import delegates.Action;
 import delegates.Func;
+import delegates.Action;
+import delegates.TinyFunc;
 import delegates.Predicate;
 import delegates.TinyAction;
 
-public abstract class QueryableCollection<T> implements Queryable<T>
+public abstract class QueryableCollection<TSource> implements Queryable<TSource>
 {
-	public abstract Iterator<T> iterator();
+	public abstract Iterator<TSource> iterator();
 	
 	@Override
-	public Queryable<T> where(Predicate<T> filter)
+	public Queryable<TSource> where(Predicate<TSource> filter)
 	{
-		CoolList<T> filteredItems = new CoolArrayList<T>();
+		CoolList<TSource> filteredItems = new CoolArrayList<TSource>();
 		
-		for (T item : this)
+		for (TSource item : this)
 		{
 			if (filter.invoke(item))
 			{
@@ -29,11 +29,11 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 
 	@Override
-	public <Out> Queryable<Out> select(TinyFunc<T, Out> selector)
+	public <TOut> Queryable<TOut> select(TinyFunc<TSource, TOut> selector)
 	{
-		CoolList<Out> itemsAfterSelection = new CoolArrayList<Out>();
+		CoolList<TOut> itemsAfterSelection = new CoolArrayList<TOut>();
 		
-		for (T item : this)
+		for (TSource item : this)
 		{
 			itemsAfterSelection.add(selector.invoke(item));
 		}
@@ -42,27 +42,27 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
-	public <C extends Comparable<C>> Queryable<T> sortBy(TinyFunc<T, C> func)
+	public <TKey extends Comparable<TKey>> Queryable<TSource> sortBy(TinyFunc<TSource, TKey> func)
 	{
-		CoolList<T> list = this.toList();
+		CoolList<TSource> list = this.toList();
 		this.quickSort(list, func, true);
 		return list;
 	}
 	
 	@Override
-	public <C extends Comparable<C>> Queryable<T> sortByDescending(TinyFunc<T, C> func)
+	public <TKey extends Comparable<TKey>> Queryable<TSource> sortByDescending(TinyFunc<TSource, TKey> func)
 	{
-		CoolList<T> list = this.toList();
+		CoolList<TSource> list = this.toList();
 		this.quickSort(list, func, false);
 		return list;
 	}
 	
 	@Override
-	public CoolList<T> toList()
+	public CoolList<TSource> toList()
 	{	
-		CoolList<T> list = new CoolArrayList<T>();
+		CoolList<TSource> list = new CoolArrayList<TSource>();
 		
-		for (T item : this)
+		for (TSource item : this)
 		{
 			list.add(item);
 		}
@@ -71,9 +71,9 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
-	public T firstOrDefault(Predicate<T> filter)
+	public TSource firstOrDefault(Predicate<TSource> filter)
 	{
-		for (T item : this)
+		for (TSource item : this)
 		{
 			if (filter.invoke(item))
 			{
@@ -85,9 +85,9 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 
 	@Override
-	public boolean any(Predicate<T> filter)
+	public boolean any(Predicate<TSource> filter)
 	{
-		for (T item : this)
+		for (TSource item : this)
 		{
 			if (filter.invoke(item))
 			{
@@ -99,9 +99,9 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
-	public boolean all(Predicate<T> filter)
+	public boolean all(Predicate<TSource> filter)
 	{
-		for (T item : this)
+		for (TSource item : this)
 		{
 			if (!filter.invoke(item))
 			{
@@ -113,9 +113,9 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	}
 	
 	@Override
-	public Queryable<T> each(TinyAction<T> action)
+	public Queryable<TSource> each(TinyAction<TSource> action)
 	{
-		for (T item : this)
+		for (TSource item : this)
 		{
 			action.invoke(item);
 		}
@@ -135,7 +135,7 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for (T item : this)
+		for (TSource item : this)
 		{
 			sb.append(item);
 			sb.append(separator);
@@ -158,7 +158,7 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 	{
 		int count = 0;
 		
-		for (T item : this)
+		for (TSource item : this)
 		{
 			count++;
 		}
@@ -166,14 +166,14 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		return count;
 	}
 	
-	private <C extends Comparable<C>> void quickSort(CoolList<T> list, TinyFunc<T, C> func, boolean ascending)
+	private <C extends Comparable<C>> void quickSort(CoolList<TSource> list, TinyFunc<TSource, C> func, boolean ascending)
 	{
 		Func<Integer, Integer, Integer> partition = new Func<Integer, Integer, Integer>()
 		{
 			@Override
 			public Integer invoke(Integer low, Integer high)
 			{
-				T pivot = list.get(high);
+				TSource pivot = list.get(high);
 		        int i = (low - 1);
 		        
 		        for (int j = low; j < high; j++) 
@@ -184,13 +184,13 @@ public abstract class QueryableCollection<T> implements Queryable<T>
 		            if (shouldSwap)
 		            { 
 		                i++;
-		                T temp = list.get(i); 
+		                TSource temp = list.get(i); 
 		                list.set(i, list.get(j));
 		                list.set(j, temp);
 		            } 
 		        } 
 		  
-		        T temp = list.get(i + 1); 
+		        TSource temp = list.get(i + 1); 
 		        list.set(i + 1, list.get(high));
 		        list.set(high, temp);
 		        return i + 1; 

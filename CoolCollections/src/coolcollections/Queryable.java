@@ -4,27 +4,27 @@ import delegates.TinyFunc;
 import delegates.TinyAction;
 import delegates.Predicate;
 
-public interface Queryable<T> extends Iterable<T>
+public interface Queryable<TSource> extends Iterable<TSource>
 {
-	Queryable<T> where(Predicate<T> filter);
+	Queryable<TSource> where(Predicate<TSource> filter);
 	
-	<Out> Queryable<Out> select(TinyFunc<T, Out> selector);
+	<TOut> Queryable<TOut> select(TinyFunc<TSource, TOut> selector);
 	
-	<C extends Comparable<C>> Queryable<T> sortBy(TinyFunc<T, C> func);
+	<TKey extends Comparable<TKey>> Queryable<TSource> sortBy(TinyFunc<TSource, TKey> func);
 	
-	<C extends Comparable<C>> Queryable<T> sortByDescending(TinyFunc<T, C> func);
+	<TKey extends Comparable<TKey>> Queryable<TSource> sortByDescending(TinyFunc<TSource, TKey> func);
 	
-	T firstOrDefault(Predicate<T> filter);
+	TSource firstOrDefault(Predicate<TSource> filter);
 	
-	boolean any(Predicate<T> filter);
+	boolean any(Predicate<TSource> filter);
 	
-	boolean all(Predicate<T> filter);
+	boolean all(Predicate<TSource> filter);
 	
-	Queryable<T> each(TinyAction<T> action);
+	Queryable<TSource> each(TinyAction<TSource> action);
 	
 	String join(String separator);
 	
-	CoolList<T> toList();
+	CoolList<TSource> toList();
 	
 	int count();
 }
