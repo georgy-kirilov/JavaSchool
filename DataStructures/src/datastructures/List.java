@@ -1,4 +1,5 @@
 package datastructures;
+
 public interface List<T>
 {
 	boolean isEmpty();

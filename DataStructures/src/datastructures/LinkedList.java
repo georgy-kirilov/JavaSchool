@@ -15,12 +15,14 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		this.clear();
 	}
 	
+	/** O(1) complexity */
 	@Override
 	public boolean isEmpty()
 	{
 		return this.count == 0;
 	}
 
+	/** O(n) complexity */
 	@Override
 	public boolean contains(T item)
 	{
@@ -35,6 +37,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		return false;
 	}
 
+	/** O(1) complexity */
 	@Override
 	public void add(T item)
 	{
@@ -57,6 +60,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		this.count++;
 	}
 
+	/** O(n) complexity */
 	@Override
 	public void insert(int index, T item)
 	{
@@ -87,6 +91,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		this.count++;
 	}
 
+	/** O(n) complexity */
 	@Override
 	public void removeAt(int index)
 	{
@@ -117,6 +122,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		this.count--;
 	}
 
+	/** O(n) complexity */
 	@Override
 	public void remove(T item)
 	{
@@ -147,6 +153,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		}
 	}
 
+	/** O(n) complexity */
 	@Override
 	public T get(int index)
 	{
@@ -165,6 +172,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		throw new IllegalArgumentException(INDEX_OUTSIDE_LIST_BOUNDS);
 	}
 
+	/** O(n) complexity */
 	@Override
 	public void set(int index, T item)
 	{
@@ -186,6 +194,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		}
 	}
 	
+	/** O(1) complexity */
 	@Override
 	public void clear()
 	{
@@ -194,6 +203,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		this.count = 0;
 	}
 	
+	/** O(1) complexity */
 	@Override
 	public int size()
 	{

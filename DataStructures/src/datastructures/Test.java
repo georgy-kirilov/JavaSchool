@@ -16,10 +16,5 @@ public class Test
 		{
 			System.out.println(a);
 		}
-		
-		/*List<String> l = new LinkedList<>();
-		l.add(null);
-		l.insertAt(0, "pesho");
-		System.out.println(l.contains("pesho"));*/
 	}
 }
