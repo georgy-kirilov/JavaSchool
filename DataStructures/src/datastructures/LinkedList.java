@@ -1,5 +1,6 @@
 package datastructures;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class LinkedList<T> implements List<T>, Iterable<T>
@@ -13,6 +14,20 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 	public LinkedList()
 	{
 		this.clear();
+	}
+	
+	public LinkedList(Iterable<T> iterable)
+	{
+		this();
+		for (T item : iterable)
+		{
+			this.add(item);
+		}
+	}
+	
+	public LinkedList(T[] array)
+	{
+		this(Arrays.asList(array));
 	}
 	
 	/** O(1) complexity */
@@ -216,19 +231,17 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		return new Iterator<T>()
 		{
 			private Node<T> current = first;
-			private int index = 0;
 			
 			@Override
 			public boolean hasNext()
 			{
-				return index < count;
+				return current != null;
 			}
 
 			@Override
 			public T next()
 			{
 				Node<T> old = current;
-				this.index++;
 				this.current = this.current.next;
 				return old.value;
 			}

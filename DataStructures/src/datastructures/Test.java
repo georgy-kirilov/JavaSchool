@@ -10,7 +10,6 @@ public class Test
 		list.add(100);
 		list.add(9);
 		list.add(0);
-		list.remove(9);
 		
 		for (int a : list)
 		{
