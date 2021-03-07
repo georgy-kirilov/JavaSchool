@@ -1,12 +1,13 @@
-package datastructures;
+package datastructures.lists;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class LinkedList<T> implements List<T>, Iterable<T>
-{
-	static final String INDEX_OUTSIDE_LIST_BOUNDS = "Index was outside the list bounds";
-	
+import datastructures.CommonHelper;
+import datastructures.Node;
+
+public class LinkedList<T> implements List<T>
+{	
 	private Node<T> first;
 	private Node<T> last;
 	private int count;
@@ -41,15 +42,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 	@Override
 	public boolean contains(T item)
 	{
-		for (T current : this)
-		{
-			if (this.areEqual(current, item))
-			{
-				return true;
-			}
-		}
-		
-		return false;
+		return this.indexOf(item) != -1;
 	}
 
 	/** O(1) complexity */
@@ -79,7 +72,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 	@Override
 	public void insert(int index, T item)
 	{
-		this.throwIfOutOfRange(index);
+		CommonHelper.throwIfIndexOutOfRange(index, this.count);
 		
 		if (index == 0)
 		{
@@ -108,9 +101,10 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 
 	/** O(n) complexity */
 	@Override
-	public void removeAt(int index)
+	public T removeAt(int index)
 	{
-		this.throwIfOutOfRange(index);
+		CommonHelper.throwIfIndexOutOfRange(index, this.count);
+		T removed = this.first.value;
 		
 		if (index == 0)
 		{
@@ -125,6 +119,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 			{
 				if (currentIndex == index - 1)
 				{
+					removed = current.next.value;
 					current.next = current.next.next;
 					break;
 				}
@@ -135,11 +130,12 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		}
 		
 		this.count--;
+		return removed;
 	}
 
 	/** O(n) complexity */
 	@Override
-	public void remove(T item)
+	public boolean remove(T item)
 	{
 		Node<T> current = this.first;
 		Node<T> previous = current;
@@ -147,7 +143,7 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 		
 		while (current != null)
 		{
-			if (this.areEqual(current.value, item))
+			if (CommonHelper.areEqual(current.value, item))
 			{
 				if (currentIndex == 0)
 				{
@@ -159,13 +155,15 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 				}
 				
 				this.count--;
-				break;
+				return true;
 			}
 			
 			previous = current;
 			current = current.next;
 			currentIndex++;
 		}
+		
+		return false;
 	}
 
 	/** O(n) complexity */
@@ -184,14 +182,29 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 			currentIndex++;
 		}
 		
-		throw new IllegalArgumentException(INDEX_OUTSIDE_LIST_BOUNDS);
+		throw new IllegalArgumentException(CommonHelper.INDEX_OUT_OF_RANGE);
 	}
 
+	@Override
+	public int indexOf(T item)
+	{
+		int index = 0;
+		for (T current : this)
+		{
+			if (CommonHelper.areEqual(current, item))
+			{
+				return index;
+			}
+			index++;
+		}
+		return -1;
+	}
+	
 	/** O(n) complexity */
 	@Override
 	public void set(int index, T item)
 	{
-		this.throwIfOutOfRange(index);
+		CommonHelper.throwIfIndexOutOfRange(index, this.count);
 		
 		int currentIndex = 0;
 		Node<T> current = this.first;
@@ -246,18 +259,5 @@ public class LinkedList<T> implements List<T>, Iterable<T>
 				return old.value;
 			}
 		};
-	}
-	
-	private void throwIfOutOfRange(int index)
-	{
-		if (index < 0 || index >= this.count)
-		{
-			throw new IllegalArgumentException(INDEX_OUTSIDE_LIST_BOUNDS);
-		}
-	}
-	
-	private boolean areEqual(T first, T second)
-	{
-		return first == null && second == null || first != null && first.equals(second);
 	}
 }
