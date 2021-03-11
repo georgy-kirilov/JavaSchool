@@ -1,6 +1,10 @@
-package datastructures.lists;
+package manual.datastructures.lists;
 
-public class Test
+import datastructures.lists.ArrayList;
+import datastructures.lists.LinkedList;
+import datastructures.lists.List;
+
+public class ListTest
 {
 	public static void main(String[] args)
     {
