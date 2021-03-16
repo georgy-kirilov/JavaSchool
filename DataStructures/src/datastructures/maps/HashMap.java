@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import datastructures.CommonHelper;
 
-public class HashMap<K, V> implements Map<K, V>, Iterable<Entry<K, V>>
+public class HashMap<K, V> implements Map<K, V>
 {
 	private HashMapNode[] nodes;
 	private int size;
@@ -18,7 +18,7 @@ public class HashMap<K, V> implements Map<K, V>, Iterable<Entry<K, V>>
 	@Override
 	public void clear()
 	{
-		this.nodes = new HashMap.HashMapNode[17];
+		this.nodes = new HashMap.HashMapNode[5];
 		this.size = 0;
 	}
 
@@ -93,7 +93,7 @@ public class HashMap<K, V> implements Map<K, V>, Iterable<Entry<K, V>>
 		
 		this.size++;
 		
-		if ((double)this.size / this.nodes.length > .8)
+		if ((double)this.size / this.nodes.length > 0.8)
 		{
 			this.expand();
 		}
@@ -113,7 +113,7 @@ public class HashMap<K, V> implements Map<K, V>, Iterable<Entry<K, V>>
 		int index = this.calculateIndex(key, this.nodes.length);
 		HashMapNode current = this.nodes[index];
 		HashMapNode previous = current;
-		
+
 		while (current != null)
 		{
 			if (CommonHelper.areEqual(current.entry.getKey(), key))
@@ -126,21 +126,22 @@ public class HashMap<K, V> implements Map<K, V>, Iterable<Entry<K, V>>
 				{
 					previous.next = current.next;
 				}
-				
-				break;
+
+				this.size--;
+				return current.entry.getValue();
 			}
 			
 			previous = current;
 			current = current.next;
 		}
 		
-		return current.entry.getValue();
+		return null;
 	}
 
 	@Override
 	public boolean isEmpty()
 	{
-		return this.size > 0;
+		return this.size <= 0;
 	}
 
 	@Override

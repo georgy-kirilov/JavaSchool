@@ -1,6 +1,6 @@
 package datastructures.maps;
 
-public interface Map<K, V>
+public interface Map<K, V> extends Iterable<Entry<K, V>>
 {
 	void clear();
 	boolean containsKey(K key);
